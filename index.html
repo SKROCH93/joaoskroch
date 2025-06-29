@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Skroch - Chef de Cozinha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilo focado na elegância e calor da culinária */
+        body {
+            background-color: #FDFBF8;
+            color: #3D2C24;
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .font-primary {
+            font-family: 'Lora', serif;
+        }
+        .bg-primary { background-color: #8D6E63; }
+        .text-primary { color: #8D6E63; }
+        .border-primary { border-color: #8D6E63; }
+        .bg-accent { background-color: #C89F90; }
+        .text-accent { color: #C89F90; }
+        .card { 
+            background-color: #FFFFFF; 
+            border-color: #EFEBE9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-primary {
+            background-color: #8D6E63;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #795548;
+        }
+        .gallery-card {
+            background-color: #FFFFFF;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid #EFEBE9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .gallery-card .card-body {
+            padding: 1.25rem;
+        }
+         /* Modal styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-backdrop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #FDFBF8;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+         .modal-backdrop.visible .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#FDFBF8] bg-opacity-80 backdrop-blur-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">João Skroch</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#sobre" class="hover:text-primary transition-colors">Filosofia</a>
+                <a href="#experiencia" class="hover:text-primary transition-colors">Experiência</a>
+                <a href="#criações" class="hover:text-primary transition-colors">Criações</a>
+                <a href="#contato" class="hover:text-primary transition-colors">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="h-screen flex items-center justify-center text-center px-4">
+            <div>
+                <h1 class="text-5xl md:text-7xl font-extrabold font-primary">A Arte de Criar Sabores</h1>
+                <p class="text-xl md:text-2xl mt-4 max-w-2xl mx-auto text-stone-700">Onde a paixão pela criação encontra a precisão da arte culinária.</p>
+            </div>
+        </section>
+
+        <!-- Sobre / Filosofia -->
+        <section id="sobre" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <!-- Coluna da Imagem -->
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <img src="imagens/joao.jpg" 
+                         alt="Foto de João Skroch, chef de cozinha, segurando frascos de conservas" 
+                         class="rounded-lg shadow-xl object-cover w-full max-w-sm h-auto">
+                </div>
+                <!-- Coluna do Texto -->
+                <div class="w-full md:w-2/3">
+                     <h2 class="text-4xl font-bold mb-6 text-center md:text-left font-primary">Uma Filosofia na Cozinha</h2>
+                     <div class="text-lg text-left space-y-4">
+                        <p>Minha jornada na gastronomia é guiada por um princípio fundamental: a criação metódica e com alma. Vindo da disciplina rigorosa da alta cozinha, aprendi que cada ingrediente tem um propósito e uma história. Sou um eterno curioso, apaixonado por explorar as raízes da culinária brasileira e transformá-las com técnica e sensibilidade.</p>
+                        <p>Acredito que um prato é mais do que a soma de suas partes; é uma expressão de cultura, memória e afeto. Essa busca por significado me levou a viajar, a conhecer produtores locais e a entender que a verdadeira criatividade floresce a partir da estrutura, da técnica e, acima de tudo, do respeito profundo pelo produto e por quem o consome.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Jornada Pessoal -->
+        <section id="jornada" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-4xl font-bold mb-8 text-center font-primary">Jornada e Inspiração</h2>
+                 <p class="text-lg text-center max-w-3xl mx-auto">Mais do que uma carreira, a culinária é uma forma de ver o mundo. Numa jornada transformadora, percorri a pé o caminho de Portugal à França, trocando trabalho por alojamento e mergulhando em culturas locais. Essa experiência moldou a minha filosofia, ensinando-me que as melhores receitas vêm da terra, das pessoas e das histórias partilhadas.</p>
+            </div>
+        </section>
+
+        <!-- Experiência / Palcos da Arte -->
+        <section id="experiencia" class="py-20 md:py-32 bg-stone-50 border-y border-stone-200">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center font-primary">Palcos da Minha Arte</h2>
+                <p class="text-lg text-center max-w-3xl mx-auto mt-4">Restaurantes onde a excelência era o ingrediente principal, no Brasil e na Europa.</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mt-12 text-center">
+                    <!-- Europa -->
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Mugaritz</h3><p class="text-sm text-stone-600">Espanha</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Bono</h3><p class="text-sm text-stone-600">Lisboa, Portugal</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">O Manel</h3><p class="text-sm text-stone-600">Braga, Portugal</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Trattoria Re di Roma</h3><p class="text-sm text-stone-600">Roma, Itália</p></div>
+                    <!-- Brasil -->
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Oro</h3><p class="text-sm text-stone-600">Brasil - Rio de janeiro</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Olympe</h3><p class="text-sm text-stone-600">Brasil - Rio de janeiro</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Escama</h3><p class="text-sm text-stone-600">Brasil- Rio de janeiro</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Salí</h3><p class="text-sm text-stone-600">Brasil - Rio de janeiro</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Aprazível</h3><p class="text-sm text-stone-600">Brasil - Rio de janeiro</p></div>
+                    <div class="p-4"><h3 class="text-xl font-bold text-stone-800">Laguiole</h3><p class="text-sm text-stone-600">Brasil - Rio de janeiro</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Criações -->
+        <section id="criações" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center font-primary">Criações Notáveis</h2>
+                <p class="text-lg text-center max-w-3xl mx-auto mt-4">Uma amostra visual do meu trabalho, onde cada prato conta uma história.</p>
+                
+                <!-- Galeria de Fotos dos Pratos -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    <div class="gallery-card">
+                        <img src="imagens/20230808_Sali_021_Alta_CredTomasRangel.jpg" alt="Prato com camarão e molho escuro">
+                        <div class="card-body">
+                            <h3 class="font-bold text-lg text-primary">Precisão e Sabor</h3>
+                            <p class="mt-2 text-sm opacity-80">Equilíbrio de ingredientes frescos e técnica apurada.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="imagens/20230814_Sali_004_Alta_CredTomasRangel.jpg" alt="Prato de massa com molho cremoso">
+                        <div class="card-body">
+                            <h3 class="font-bold text-lg text-primary">Conforto e Elegância</h3>
+                            <p class="mt-2 text-sm opacity-80">Releituras de clássicos com um toque contemporâneo.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="imagens/20230814_Sali_010_Alta_CredTomasRangel.jpg" alt="Salada com atum selado e ovo">
+                        <div class="card-body">
+                            <h3 class="font-bold text-lg text-primary">Frescor e Textura</h3>
+                            <p class="mt-2 text-sm opacity-80">A celebração do produto em sua forma mais pura.</p>
+                        </div>
+                    </div>
+                     <div class="gallery-card">
+                        <img src="imagens/20230814_Sali_054_Alta_CredTomasRangel.jpg" alt="Prato com camarões grelhados">
+                        <div class="card-body">
+                            <h3 class="font-bold text-lg text-primary">Mar e Fogo</h3>
+                            <p class="mt-2 text-sm opacity-80">A intensidade dos sabores do mar realçados na grelha.</p>
+                        </div>
+                    </div>
+                     <div class="gallery-card">
+                        <img src="imagens/20230814_Sali_085_Alta_CredTomasRangel.jpg" alt="Prato com vegetais frescos e molho claro">
+                        <div class="card-body">
+                            <h3 class="font-bold text-lg text-primary">Cores da Terra</h3>
+                            <p class="mt-2 text-sm opacity-80">Uma composição vibrante de vegetais da estação.</p>
+                        </div>
+                    </div>
+                     <div class="gallery-card">
+                        <img src="imagens/20230808_Sali_010_Alta_CredTomasRangel.jpg" alt="Peixe vermelho grelhado com acompanhamentos">
+                        <div class="card-body">
+                            <h3 class="font-bold text-lg text-primary">Simplicidade e Respeito</h3>
+                            <p class="mt-2 text-sm opacity-80">Deixando o ingrediente principal brilhar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+                    <div id="recipe-result-container" class="mt-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <footer id="contato" class="py-20 md:py-32 bg-stone-50 border-y border-stone-200">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-4xl font-bold font-primary">Vamos Criar Juntos?</h2>
+                 <p class="text-lg max-w-2xl mx-auto mt-4">Busco sempre novos desafios e colaborações onde posso aplicar minha paixão e técnica. Se você valoriza a criatividade e a disciplina na cozinha, vamos conversar.</p>
+                 <a href="mailto:skroch.joao@gmail.com" class="mt-8 inline-block btn-primary px-8 py-4 rounded-lg font-bold text-lg">skroch.joao@gmail.com</a>
+            </div>
+        </footer>
+    </main>
+    <script>
+    </script>
+</body>
+</html>
